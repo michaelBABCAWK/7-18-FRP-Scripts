@@ -1,0 +1,27 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameManager_TrackingCompletionsBoosters : MonoBehaviour
+{
+    public int completions;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        completions = GameManager_AllSectionCompletionTrackers.BoostersCompletions;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Player":
+                completions += 1;
+                break;
+            default:
+                break;
+        }
+    }
+}
